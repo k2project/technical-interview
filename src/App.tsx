@@ -50,25 +50,29 @@ function App(props: any) {
 
     if (error) {
         return (
-            <section>
+            <section className='404-error'>
                 <h1>404 Error</h1>
-                <p>{error}</p>
+                <p role='alert'>{error}</p>
             </section>
         );
     }
 
     return (
         <div className='App'>
-            <h1 className='heading'>{state.heading}</h1>
-            <div className='content'>
-                <button className='load-posts' onClick={handleClick}>
-                    Fetch posts
-                </button>
+            <header>
+                <h1 className='heading'>{state.heading}</h1>
+            </header>
+            <main className='content'>
+                {state.posts.length === 0 && (
+                    <button className='load-posts' onClick={handleClick}>
+                        Fetch posts
+                    </button>
+                )}
 
                 <PostsList state={state} setState={setState} />
 
                 {state.view && <Post view={state.view} />}
-            </div>
+            </main>
         </div>
     );
 }
