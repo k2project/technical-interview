@@ -4,8 +4,10 @@ import PostsList from './components/PostsList';
 
 function App(props: any) {
     const [state, setState] = useState(props.initialState);
+    const [error, setError] = useState('');
 
     const getPosts = (cb: any) => {
+        setError('');
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then((response) => response.json())
             .then((json) => {
@@ -26,6 +28,9 @@ function App(props: any) {
                 );
 
                 cb(result);
+            })
+            .catch((error) => {
+                setError('Something went wrong');
             });
     };
 
@@ -42,6 +47,15 @@ function App(props: any) {
             setState(update);
         });
     };
+
+    if (error) {
+        return (
+            <section>
+                <h1>404 Error</h1>
+                <p>{error}</p>
+            </section>
+        );
+    }
 
     return (
         <div className='App'>
