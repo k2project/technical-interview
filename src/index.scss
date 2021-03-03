@@ -73,7 +73,7 @@ ul {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh -180px);
     font-size: 20px;
     flex-direction: column;
 }
@@ -82,10 +82,7 @@ ul {
     display: block;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    margin-top: -180px;
-    padding-top: 170px;
-    padding-bottom: 40px;
+    height: 90vh;
     overflow: scroll;
 }
 .posts-list {
