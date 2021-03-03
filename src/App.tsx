@@ -50,8 +50,8 @@ function App(props: any) {
 
     if (error) {
         return (
-            <section className='404-error'>
-                <h1>404 Error</h1>
+            <section className='error-404'>
+                <h1 className=' heading color--theme'>404 Error</h1>
                 <p role='alert'>{error}</p>
             </section>
         );
@@ -59,12 +59,12 @@ function App(props: any) {
 
     return (
         <div className='App'>
-            <header>
-                <h1 className='heading'>{state.heading}</h1>
+            <header className='header'>
+                <h1>{state.heading}</h1>
             </header>
             <main className='content'>
                 {state.posts.length === 0 && (
-                    <button className='load-posts' onClick={handleClick}>
+                    <button className='button load-posts' onClick={handleClick}>
                         Fetch posts
                     </button>
                 )}
