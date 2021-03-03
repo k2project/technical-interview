@@ -68,8 +68,9 @@ function App(props: any) {
                         Fetch posts
                     </button>
                 )}
-
-                <PostsList state={state} setState={setState} />
+                <div>
+                    <PostsList state={state} setState={setState} />
+                </div>
 
                 {state.view && <Post view={state.view} />}
             </main>

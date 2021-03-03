@@ -40,15 +40,15 @@ function PostsList(props: any) {
     }
 
     return (
-        <ul className='posts' aria-label='posts list'>
+        <ul className='posts-list' aria-label='posts list'>
             {posts.map((post: any, index: number) => {
                 return (
-                    <li role='listitem' className='post-card' key={index}>
+                    <li role='listitem' key={index}>
                         <button
-                            className='show-post'
+                            className='post-card'
                             onClick={(e) => handleItemClick(e, post)}
                         >
-                            <span>View</span>
+                            <span className='button show-post'>View</span>
                             <span>{post.title}</span>
                         </button>
                     </li>
