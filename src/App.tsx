@@ -5,6 +5,9 @@ import PostsList from './components/PostsList';
 function App(props: any) {
     const [state, setState] = useState(props.initialState);
     const [error, setError] = useState('');
+    const [postError, setPostError] = useState('');
+
+    const showPost = state.view || postError;
 
     const getPosts = (cb: any) => {
         setError('');
@@ -69,10 +72,14 @@ function App(props: any) {
                     </button>
                 )}
                 <div>
-                    <PostsList state={state} setState={setState} />
+                    <PostsList
+                        state={state}
+                        setState={setState}
+                        setPostError={setPostError}
+                    />
                 </div>
 
-                {state.view && <Post view={state.view} />}
+                {showPost && <Post view={state.view} postError={postError} />}
             </main>
         </div>
     );

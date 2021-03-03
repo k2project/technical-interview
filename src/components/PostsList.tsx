@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function PostsList(props: any) {
     let { posts } = props.state;
 
-    const [error, setError] = useState('');
-
     const handleItemClick = (e: any, post: any) => {
-        setError('');
+        props.setPostError('');
 
         fetch('https://jsonplaceholder.typicode.com/posts/' + post.id)
             .then((response) => response.json())
@@ -22,22 +20,13 @@ function PostsList(props: any) {
                 props.setState(updateView);
             })
             .catch((error) => {
-                setError(
+                props.setPostError(
                     'We are sorry but we have had trouble getting that post.'
                 );
             });
     };
 
     if (!posts) return null;
-
-    if (error) {
-        return (
-            <section className='404-error'>
-                <h1>404 Error</h1>
-                <p role='alert'>{error}</p>
-            </section>
-        );
-    }
 
     return (
         <ul className='posts-list' aria-label='posts list'>

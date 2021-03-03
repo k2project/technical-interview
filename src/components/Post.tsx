@@ -1,11 +1,17 @@
 import React from 'react';
 
 function Post(props: any) {
-    let { title, body } = props.view;
+    if (props.postError) {
+        return (
+            <section>
+                <p role='alert'>{props.postError}</p>
+            </section>
+        );
+    }
     return (
         <article className='viewer'>
-            <h2 className='viewer-title'>{title || ''}</h2>
-            <p className='viewer-content'>{body || ''}</p>
+            <h2 className='viewer-title'>{props.view.title || ''}</h2>
+            <p className='viewer-content'>{props.view.body || ''}</p>
         </article>
     );
 }
